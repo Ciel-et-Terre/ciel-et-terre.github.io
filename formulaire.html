@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Proposer un texte - Ciel & Terre</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Proposer un texte</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <form id="text-form">
+      <label for="author">Nom (optionnel):</label><br>
+      <input type="text" id="author" name="author" placeholder="Votre nom"><br><br>
+
+      <label for="title" required>Titre:</label><br>
+      <input type="text" id="title" name="title" required><br><br>
+
+      <label for="category" required>Catégorie:</label><br>
+      <select id="category" name="category" required>
+        <option value="">Choisissez...</option>
+        <option value="Poème">Poème</option>
+        <option value="Prière">Prière</option>
+        <option value="Chant">Chant</option>
+        <option value="Roman">Roman</option>
+      </select><br><br>
+
+      <label for="content" required>Texte:</label><br>
+      <textarea id="content" name="content" rows="8" required></textarea><br><br>
+
+      <button type="submit">Ajouter</button>
+    </form>
+    <p id="success-msg" style="display:none;color:green;">Texte ajouté !</p>
+  </div>
+
+  <footer>
+    <p>Merci pour votre contribution !</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
