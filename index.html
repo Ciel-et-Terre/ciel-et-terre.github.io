@@ -2,10 +2,65 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Ciel & Terre</title>
+  <title>Ciel & Terre - Accueil</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Bienvenue sur le site Ciel & Terre</h1>
-  <p>Site en cours de construction ✝️</p>
+  <header>
+    <h1>Ciel & Terre</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="formulaire.html">Proposer un texte</a>
+    </nav>
+    <p>"Chantez à l'Éternel un cantique nouveau" - Psaume 96:1</p>
+  </header>
+
+  <div class="container">
+    <section id="featured">
+      <h2>Texte mis à l'honneur</h2>
+      <div id="highlight" class="card"></div>
+    </section>
+
+    <section>
+      <h2>Toutes les contributions</h2>
+      <label for="category-filter">Filtrer par catégorie:</label>
+      <select id="category-filter">
+        <option value="">Toutes</option>
+        <option value="Poème">Poème</option>
+        <option value="Prière">Prière</option>
+        <option value="Chant">Chant</option>
+        <option value="Roman">Roman</option>
+      </select>
+      <label for="sort-select">Trier:</label>
+      <select id="sort-select">
+        <option value="date">Par date</option>
+        <option value="alpha">Par titre</option>
+      </select>
+      <div id="texts-list"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>"Que tout ce qui respire loue l'Éternel" - Psaume 150:6</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  // mettre en avant un texte manuellement (le premier de la liste)
+  document.addEventListener('DOMContentLoaded', () => {
+    const highlight = document.getElementById('highlight');
+    const texts = JSON.parse(localStorage.getItem('texts') || '[]');
+    if (texts.length > 0) {
+      const text = texts[0];
+      highlight.innerHTML = `
+        <h3>${text.title}</h3>
+        <p><strong>${text.author || 'Anonyme'}</strong> - <em>${text.category}</em></p>
+        <p>${text.content.replace(/\n/g,'<br>')}</p>
+      `;
+    } else {
+      highlight.textContent = 'Aucun texte pour le moment';
+    }
+  });
+  </script>
 </body>
 </html>
